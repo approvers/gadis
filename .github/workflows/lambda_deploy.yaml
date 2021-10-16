@@ -9,8 +9,6 @@ on:
     types:
       - opened
       - synchronize
-    paths:
-      - 'lambda/**'
 
 
   workflow_dispatch:
