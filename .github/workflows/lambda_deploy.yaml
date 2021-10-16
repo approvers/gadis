@@ -29,7 +29,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@b8c74de753fbcb4868bf2011fb2e15826ce973af
         with:
           role-to-assume: ${{ secrets.ASSUMING_ROLE }}
           role-session-name: GitHubAction_LambdaDeploy
