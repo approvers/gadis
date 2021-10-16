@@ -28,7 +28,7 @@ jobs:
           filters: .github/lambda-deploy-file-filter.yaml
 
       - name: Install dependencies for each functions
-        runs: |
+        run: |
           export ORIGIN=$(pwd)
           for dir in $(ls -d lambda/*); do
             cd ORIGIN/$dir
