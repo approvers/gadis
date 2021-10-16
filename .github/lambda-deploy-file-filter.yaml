@@ -1,0 +1,6 @@
+AuthenticateGAuth:
+  - 'lambda/authenticateGAuth'
+FetchUser:
+  - 'lambda/fetchUser'
+FetchDiscordUserInformation:
+  - 'lambda/fetchDiscordUserInformation'
