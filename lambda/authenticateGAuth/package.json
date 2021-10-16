@@ -1,0 +1,8 @@
+{
+  "name": "authenticateGAuth",
+  "version": "1.0.0",
+  "description": "Contact to Genkai Authentication Service to retrieve Discord User ID.",
+  "main": "index.js",
+  "repository": "https://github.com/approvers/gadis/tree/main/lambda/authenticateGAuth",
+  "license": "MIT"
+}
