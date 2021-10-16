@@ -31,9 +31,9 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          packages: write
-          contents: read
-          id-token: write
+          role-to-assume: ${{ secrets.ASSUMING_ROLE }}
+          role-session-name: GitHubAction_LambdaDeploy
+          aws-region: ${{ secrets.AWS_REGION }}
 
       - uses: dorny/paths-filter@v2.2.1
         id: filter
