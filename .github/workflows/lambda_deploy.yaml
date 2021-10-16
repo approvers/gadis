@@ -37,8 +37,6 @@ jobs:
         id: filter
         with:
           filters: .github/lambda-deploy-file-filter.yaml
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install dependencies for each functions
         run: |

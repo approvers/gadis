@@ -1,6 +1,6 @@
 GAuth_DIP_AuthenticateGAuth:
   - 'lambda/authenticateGAuth'
 GAuth_DIP_FetchUser:
-  - 'lambda/fetchUser'
+  - 'invalid'
 GAuth_DIP_FetchDiscordUserInformation:
   - 'lambda/fetchDiscordUserInformation'
