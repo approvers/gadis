@@ -12,6 +12,10 @@ jobs:
     name: Deploy projects to AWS Lambda
     runs-on: ubuntu-latest
 
+    permissions:
+      id-token: write
+      contents: write
+
     steps:
       - name: Checkout to the repository
         uses: actions/checkout@v2
