@@ -19,14 +19,22 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          role-to-assume: ${{ secrets.ASSUMING_ROLE }}
           aws-region: ${{ secrets.AWS_REGION }}
 
       - uses: dorny/paths-filter@v2.2.1
         id: filter
         with:
           filters: .github/lambda-deploy-file-filter.yaml
+
+      - name: Install dependencies for each functions
+        runs: |
+          export ORIGIN=$(pwd)
+          for dir in $(ls -d lambda/*); do
+            cd ORIGIN/$dir
+            echo "Installing in $(pwd)"
+            yarn install
+          done
 
       - uses: blombard/lambda-monorepo@master
         with:

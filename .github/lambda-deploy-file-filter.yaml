@@ -1,6 +1,6 @@
-AuthenticateGAuth:
+GAuth_DIP_AuthenticateGAuth:
   - 'lambda/authenticateGAuth'
-FetchUser:
+GAuth_DIP_FetchUser:
   - 'lambda/fetchUser'
-FetchDiscordUserInformation:
+GAuth_DIP_FetchDiscordUserInformation:
   - 'lambda/fetchDiscordUserInformation'
