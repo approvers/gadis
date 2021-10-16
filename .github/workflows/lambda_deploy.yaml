@@ -5,7 +5,10 @@ on:
     paths:
       - 'lambda/**'
   # TODO: This is for test of dorny/paths-filter.
-  pull_requests:
+  pull_request:
+    types:
+      - opened
+      - synchronize
     paths:
       - 'lambda/**'
 
