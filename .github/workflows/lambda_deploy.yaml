@@ -20,6 +20,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           role-to-assume: ${{ secrets.ASSUMING_ROLE }}
+          role-session-name: GitHubAction_LambdaDeploy
           aws-region: ${{ secrets.AWS_REGION }}
 
       - uses: dorny/paths-filter@v2.2.1
