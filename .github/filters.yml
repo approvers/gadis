@@ -1,6 +1,6 @@
 GAuth_DIP_AuthenticateGAuth:
-  - 'lambda/authenticateGAuth/**/*'
+  - 'lambda/packages/authenticateGAuth/**/*'
 GAuth_DIP_FetchUser:
-  - 'lambda/fetchUser/**/*'
+  - 'lambda/packages/fetchUser/**/*'
 GAuth_DIP_FetchDiscordUserInformation:
-  - 'lambda/fetchDiscordUserInformation/**/*'
+  - 'lambda/packages/fetchDiscordUserInformation/**/*'

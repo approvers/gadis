@@ -3,21 +3,15 @@
 
 FUNCTION_NAME=$1
 PATH_NAME=$2
-ZIP_PARAMS=$3
 
 echo "==> Deploying $FUNCTION_NAME (at $PATH_NAME)"
 
 if [ -n "$PATH_NAME" ]; then cd $PATH_NAME; fi
 
 echo "    ==> Installing dependencies"
-yarn install --frozen-lockfile
-if [ $? -eq 1 ]; then
-  echo "  ==> Installing dependencies - FAILED"
-  exit 1
-fi
 
 echo "    ==> Creating layer ZIP file"
-zip lambda.zip -r $ZIP_PARAMS
+zip lambda.zip -r dist/main.js
 
 export AWS_LAMBDA_DEPLOY_FAILURE=0
 
