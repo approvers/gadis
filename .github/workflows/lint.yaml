@@ -1,0 +1,65 @@
+on:
+  pull_requests:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+jobs:
+  eslint:
+    name: Run eslint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout to the repository
+        uses: actions/checkout@v2
+
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('lambda/**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.14
+
+      - name: Install dependencies for the root workspace and each lambda workspace
+        working-directory: lambda/
+        run: pnpm install
+
+      - name: Execute eslint
+        working-directory: lambda/
+        run: pnpm each lint:eslint
+
+  prettier:
+    name: Run prettier
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout to the repository
+        uses: actions/checkout@v2
+
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('lambda/**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.14
+
+      - name: Install dependencies for the root workspace and each lambda workspace
+        working-directory: lambda/
+        run: pnpm install
+
+      - name: Execute prettier
+        working-directory: lambda/
+        run: pnpm each lint:prettier
