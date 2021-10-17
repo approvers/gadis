@@ -39,10 +39,22 @@ jobs:
         with:
           filters: .github/filters.yml
 
+      - name: Install dependencies for each functions
+        run: |
+          export GADIS_DEP_INSTALL_ORIGIN=$(pwd)
+          for dir in $(ls -d lambda/*); do
+            cd $GADIS_DEP_INSTALL_ORIGIN/$dir
+            echo "Installing in $(pwd)"
+            yarn install
+          done
+          echo "All installation completed - Resetting current working directory"
+          cd $GADIS_DEP_INSTALL_ORIGIN
+          unset GADIS_DEP_INSTALL_ORIGIN
+
       - uses: blombard/lambda-monorepo@master
         with:
           lambda-functions: '${{ toJson(steps.filter.outputs) }}'
           zip-params: '*.js *.json src/ node_modules/'
-          alias-name: 'development'
+          alias-name: 'production'
           layer-name: 'DeployedLayer'
 
