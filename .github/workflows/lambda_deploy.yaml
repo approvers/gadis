@@ -41,12 +41,15 @@ jobs:
 
       - name: Install dependencies for each functions
         run: |
-          export ORIGIN=$(pwd)
+          export GADIS_DEP_INSTALL_ORIGIN=$(pwd)
           for dir in $(ls -d lambda/*); do
-            cd $ORIGIN/$dir
+            cd $GADIS_DEP_INSTALL_ORIGIN/$dir
             echo "Installing in $(pwd)"
             yarn install
           done
+          echo "All installation completed - Resetting current working directory"
+          cd $GADIS_DEP_INSTALL_ORIGIN
+          unset GADIS_DEP_INSTALL_ORIGIN
 
       - uses: blombard/lambda-monorepo@master
         with:
