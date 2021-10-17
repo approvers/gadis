@@ -28,7 +28,8 @@ const configuration: Configuration = {
   output: {
     library: "index",
     libraryExport: "handler",
-    libraryTarget: "umd"
+    libraryTarget: "umd",
+    globalObject: 'this',
   }
 }
 
