@@ -40,13 +40,6 @@ jobs:
         with:
           version: 6.14
 
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@b8c74de753fbcb4868bf2011fb2e15826ce973af
-        with:
-          role-to-assume: ${{ secrets.ASSUMING_ROLE }}
-          role-session-name: GitHubAction_LambdaDeploy
-          aws-region: ${{ secrets.AWS_REGION }}
-
       - uses: dorny/paths-filter@v2.10.2
         id: filter
         with:
@@ -59,6 +52,13 @@ jobs:
       - name: Build each lambda workspaces
         working-directory: lambda/
         run: pnpm build
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@b8c74de753fbcb4868bf2011fb2e15826ce973af
+        with:
+          role-to-assume: ${{ secrets.ASSUMING_ROLE }}
+          role-session-name: GitHubAction_LambdaDeploy
+          aws-region: ${{ secrets.AWS_REGION }}
 
       - uses: blombard/lambda-monorepo@master
         with:
