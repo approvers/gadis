@@ -1,3 +1,4 @@
+import isEven from "is-even";
 import {APIGatewayEventRequestContext, APIGatewayProxyEvent, APIGatewayProxyResult} from "aws-lambda";
 
 export async function handler(
@@ -5,8 +6,14 @@ export async function handler(
   context: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> {
 
+  const randomNumber = Math.floor(Math.random() * 1000000);
+
   const response = {
-    "message": "Beep-poop, here is authenticateGAuth."
+    "message": "Beep-poop, here is authenticateGAuth.",
+    "additional": {
+      "number": randomNumber,
+      "even": isEven(randomNumber)
+    },
   };
 
   return {
