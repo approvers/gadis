@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "each": "pnpm run --filter ./packages/",
     "build": "pnpm each build",
-    "dev": "pnpm each dev"
+    "dev": "pnpm each dev",
+    "lint": "pnpm each lint",
+    "fix": "pnpm each fix"
   },
   "repository": {
     "type": "git",
