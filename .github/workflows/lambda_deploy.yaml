@@ -53,9 +53,11 @@ jobs:
           filters: .github/filters.yml
 
       - name: Install dependencies for the root workspace and each lambda workspace
+        working-directory: lambda/
         run: pnpm install
 
       - name: Build each lambda workspaces
+        working-directory: lambda/
         run: pnpm build
 
       - uses: blombard/lambda-monorepo@master
