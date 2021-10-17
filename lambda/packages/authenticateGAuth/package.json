@@ -2,7 +2,17 @@
   "name": "authenticateGAuth",
   "version": "1.0.0",
   "description": "Contact to Genkai Authentication Service to retrieve Discord User ID.",
-  "main": "index.js",
+  "main": "./src/main.ts",
   "repository": "https://github.com/approvers/gadis/tree/main/lambda/authenticateGAuth",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "is-even": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/is-even": "^1.0.0"
+  }
 }

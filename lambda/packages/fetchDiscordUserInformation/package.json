@@ -2,7 +2,11 @@
   "name": "fetchDiscordUserInformation",
   "version": "1.0.0",
   "description": "Fetch Discord user information from Discord using Discord User ID.",
-  "main": "index.js",
+  "main": "src/main.ts",
   "repository": "https://github.com/approvers/gadis/tree/main/lambda/fetchDiscordUserInformation",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack",
+    "dev": "tsc --watch"
+  }
 }
