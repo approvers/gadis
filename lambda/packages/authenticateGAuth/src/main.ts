@@ -1,9 +1,16 @@
-import isEven from "is-even";
+import {APIGatewayEventRequestContext, APIGatewayProxyEvent, APIGatewayProxyResult} from "aws-lambda";
 
-function is_even(number: number): boolean {
-  return isEven(number);
+export async function handler(
+  event: APIGatewayEventRequestContext,
+  context: APIGatewayProxyEvent
+): Promise<APIGatewayProxyResult> {
+
+  const response = {
+    "message": "Beep-poop, here is authenticateGAuth."
+  };
+
+  return {
+    statusCode: 200,
+    body: JSON.stringify(response)
+  };
 }
-
-const number: number = 7123478;
-
-console.log(`${number} is ${is_even(number) ? "even" : "odd"}`)
