@@ -1,0 +1,48 @@
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'lambda/**'
+  # TODO: This is for test of dorny/paths-filter.
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy projects to AWS Lambda
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
+      contents: write
+      pull-requests: read
+
+    steps:
+      - name: Checkout to the repository
+        uses: actions/checkout@v2
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@b8c74de753fbcb4868bf2011fb2e15826ce973af
+        with:
+          role-to-assume: ${{ secrets.ASSUMING_ROLE }}
+          role-session-name: GitHubAction_LambdaDeploy
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - uses: dorny/paths-filter@v2.10.2
+        id: filter
+        with:
+          filters: .github/filters.yml
+
+      - uses: blombard/lambda-monorepo@master
+        with:
+          lambda-functions: '${{ toJson(steps.filter.outputs) }}'
+          zip-params: '*.js *.json src/ node_modules/'
+          alias-name: 'production'
+          layer-name: 'DeployedLayer'
+
