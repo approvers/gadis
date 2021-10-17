@@ -2,7 +2,11 @@
   "name": "fetchUser",
   "version": "1.0.0",
   "description": "Delegate process to the other lambda function to fetch the user information",
-  "main": "index.js",
+  "main": "src/main.ts",
   "repository": "https://github.com/approvers/gadis/tree/main/lambda/fetchUser",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack",
+    "dev": "tsc --watch"
+  }
 }
