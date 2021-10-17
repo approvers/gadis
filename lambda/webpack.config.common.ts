@@ -24,6 +24,11 @@ const configuration: Configuration = {
         }
       }
     ]
+  },
+  output: {
+    library: "index",
+    libraryTarget: "umd",
+    globalObject: 'this',
   }
 }
 
