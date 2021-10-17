@@ -43,7 +43,7 @@ jobs:
         run: |
           export ORIGIN=$(pwd)
           for dir in $(ls -d lambda/*); do
-            cd ORIGIN/$dir
+            cd $ORIGIN/$dir
             echo "Installing in $(pwd)"
             yarn install
           done
