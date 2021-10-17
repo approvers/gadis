@@ -1,11 +1,9 @@
 import { Configuration } from "webpack";
-import path from "path";
 
-console.log("Using shared configuration");
-console.log((__filename));
+const isProduction = (process.env.NODE_ENV === "production");
 
 const configuration: Configuration = {
-  mode: "development",
+  mode: isProduction ? "production" : "development",
   entry: "./src/main.ts",
   resolve: {
     extensions: [

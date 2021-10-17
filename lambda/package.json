@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "each": "pnpm run --filter ./packages/",
     "build": "pnpm each build",
-    "dev": "pnpm each dev"
+    "dev": "pnpm each dev",
+    "lint": "pnpm each lint",
+    "fix": "pnpm each fix"
   },
   "repository": {
     "type": "git",
@@ -20,6 +22,12 @@
   },
   "homepage": "https://github.com/approvers/gadis#readme",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^8.0.1",
+    "eslint-import-resolver-webpack": "^0.13.1",
+    "eslint-plugin-import": "^2.25.2",
+    "prettier": "^2.4.1",
     "ts-loader": "^9.2.6",
     "ts-node": "^10.3.0",
     "typescript": "^4.4.4",

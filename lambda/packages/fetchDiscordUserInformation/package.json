@@ -7,7 +7,13 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack",
-    "dev": "tsc --watch"
+    "dev": "tsc --watch",
+    "lint": "pnpm lint:eslint && pnpm lint:prettier",
+    "lint:eslint": "eslint src/**/*.ts",
+    "lint:prettier": "prettier -c src/**/*.ts",
+    "fix": "pnpm fix:eslint && pnpm fix:prettier",
+    "fix:eslint": "pnpm lint:eslint -- --fix",
+    "fix:prettier": "pnpm lint:prettier -- -w"
   },
   "dependencies": {
     "aws-lambda": "^1.0.6"
