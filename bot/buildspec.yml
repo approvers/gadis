@@ -13,3 +13,5 @@ phases:
 artifacts:
   files:
     - bot/gadis_bot/target/release/gadis_bot
+    - lifetime_scripts
+    - appspec.yml

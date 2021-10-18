@@ -1,0 +1,22 @@
+version: 0.0
+os: linux
+
+files:
+  - source: ./gadis_bot
+    destination: /home/ec2-user/bot
+
+permissions:
+  - object: /home/ec2-user/bot
+    pattern: "gadis_bot"
+    mode: 754
+
+hooks:
+  ApplicationStart:
+    - location: lifetime_scripts/start.sh
+      timeout: 300
+      runas: root
+  ApplicationStop:
+    - location: lifetime_scripts/stop.sh
+      timeout: 300
+      runas: root
+
