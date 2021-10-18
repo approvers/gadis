@@ -12,11 +12,11 @@ permissions:
 
 hooks:
   ApplicationStart:
-    - location: lifetime_scripts/start.sh
+    - location: hooks/start.sh
       timeout: 300
       runas: root
   ApplicationStop:
-    - location: lifetime_scripts/stop.sh
+    - location: hooks/stop.sh
       timeout: 300
       runas: root
 
