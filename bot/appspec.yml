@@ -3,7 +3,7 @@ os: linux
 
 files:
   - source: /gadis_bot/target/release/gadis_bot
-    destination: /home/ec2-user/bot/gadis_bot
+    destination: /home/ec2-user/bot
 
 permissions:
   - object: /home/ec2-user/bot
