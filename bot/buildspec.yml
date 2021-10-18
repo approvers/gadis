@@ -4,6 +4,7 @@ phases:
   install:
     commands:
       - curl https://sh.rustup.rs -sSf | sh /dev/stdin -y
+      - source $HOME/.cargo/env
   build:
     commands:
       - cd bot/gadis_bot
