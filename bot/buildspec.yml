@@ -14,5 +14,5 @@ artifacts:
   base-directory: bot
   files:
     - gadis_bot/target/release/gadis_bot
-    - lifetime_scripts/*
+    - hooks/*
     - appspec.yml
