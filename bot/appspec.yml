@@ -2,10 +2,8 @@ version: 0.0
 os: linux
 
 files:
-  - source: ./gadis_bot/target/release/gadis_bot
+  - source: /gadis_bot/target/release/gadis_bot
     destination: /home/ec2-user/bot/gadis_bot
-  - source: ./lifetime_scripts
-    destination: /home/ec2-user/bot/lifetime_scripts
 
 permissions:
   - object: /home/ec2-user/bot
@@ -14,11 +12,11 @@ permissions:
 
 hooks:
   ApplicationStart:
-    - location: /home/ec2-user/bot/lifetime_scripts/start.sh
+    - location: lifetime_scripts/start.sh
       timeout: 300
       runas: root
   ApplicationStop:
-    - location: /home/ec2-user/bot/lifetime_scripts/stop.sh
+    - location: lifetime_scripts/stop.sh
       timeout: 300
       runas: root
 
