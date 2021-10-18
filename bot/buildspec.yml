@@ -12,4 +12,4 @@ phases:
 
 artifacts:
   files:
-    - bot/gadis_bot/target/release/gadis/bot
+    - bot/gadis_bot/target/release/gadis_bot
