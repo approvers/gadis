@@ -11,7 +11,8 @@ phases:
       - cargo build --release
 
 artifacts:
+  base-directory: bot
   files:
-    - bot/gadis_bot/target/release/gadis_bot
-    - bot/lifetime_scripts
-    - bot/appspec.yml
+    - gadis_bot/target/release/gadis_bot
+    - lifetime_scripts/*
+    - appspec.yml
