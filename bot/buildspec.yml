@@ -1,0 +1,14 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - curl https://sh.rustup.rs -sSf | sh
+  build:
+    commands:
+      - cd bot/gadis_bot
+      - cargo build --release
+
+artifacts:
+  files:
+    - bot/gadis_bot/target/release/gadis/bot
