@@ -5,6 +5,8 @@
   "main": "src/index.tsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "dev": "webpack-dev-server",
     "lint": "pnpm lint:eslint && pnpm lint:stylelint && pnpm lint:prettier",
     "lint:eslint": "pnpm exec eslint src/**/*.tsx",
     "lint:stylelint": "pnpm exec stylelint src/**/*.module.scss",
