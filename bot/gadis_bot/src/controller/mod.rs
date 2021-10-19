@@ -1,4 +1,3 @@
-trait DiscordUserRequestor {
-    fn new() -> Self;
+pub trait DiscordUserRequestor {
     fn request(discord_id: i32);
 }

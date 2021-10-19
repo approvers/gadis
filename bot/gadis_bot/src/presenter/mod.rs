@@ -1,6 +1,5 @@
 use crate::domain::DiscordUserInformation;
 
-trait DiscordUserProvider {
-    fn new() -> Self;
+pub trait DiscordUserProvider {
     fn provide(discord_user: DiscordUserInformation);
 }

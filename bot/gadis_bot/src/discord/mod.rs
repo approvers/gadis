@@ -1,6 +1,5 @@
 use crate::domain::DiscordUserInformation;
 
-trait DiscordGateway {
-    fn new() -> Self;
+pub trait DiscordGateway {
     fn request_user(discord_id: u32) -> DiscordUserInformation;
 }
