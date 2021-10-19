@@ -6,10 +6,12 @@ specifiers:
   '@babel/preset-react': ^7.14.5
   '@babel/preset-typescript': ^7.15.0
   '@types/copy-webpack-plugin': ^8.0.1
+  '@types/fibers': ^3.1.1
   '@types/html-webpack-plugin': ^3.2.6
   '@types/node': ^16.11.1
   '@types/react': ^17.0.30
   '@types/react-dom': ^17.0.9
+  '@types/sass': ^1.16.1
   '@types/webpack': ^5.28.0
   '@types/webpack-dev-server': ^4.3.1
   babel-loader: ^8.2.2
@@ -18,6 +20,7 @@ specifiers:
   html-webpack-plugin: ^5.4.0
   react: ^17.0.2
   react-dom: ^17.0.2
+  sass: ^1.43.2
   sass-loader: ^12.2.0
   style-loader: ^3.3.0
   ts-loader: ^9.2.6
@@ -37,17 +40,20 @@ devDependencies:
   '@babel/preset-react': 7.14.5_@babel+core@7.15.8
   '@babel/preset-typescript': 7.15.0_@babel+core@7.15.8
   '@types/copy-webpack-plugin': 8.0.1_webpack-cli@4.9.1
+  '@types/fibers': 3.1.1
   '@types/html-webpack-plugin': 3.2.6
   '@types/node': 16.11.1
   '@types/react': 17.0.30
   '@types/react-dom': 17.0.9
+  '@types/sass': 1.16.1
   '@types/webpack': 5.28.0_webpack-cli@4.9.1
   '@types/webpack-dev-server': 4.3.1_webpack-cli@4.9.1
   babel-loader: 8.2.2_f5560e5b4f7053984b6dd7c23aa03d2f
   copy-webpack-plugin: 9.0.1_webpack@5.58.2
   css-loader: 6.4.0_webpack@5.58.2
   html-webpack-plugin: 5.4.0_webpack@5.58.2
-  sass-loader: 12.2.0_webpack@5.58.2
+  sass: 1.43.2
+  sass-loader: 12.2.0_sass@1.43.2+webpack@5.58.2
   style-loader: 3.3.0_webpack@5.58.2
   ts-loader: 9.2.6_typescript@4.4.4+webpack@5.58.2
   ts-node: 10.3.0_4837b44df871fd426bb731ce8876dc42
@@ -1403,6 +1409,10 @@ packages:
       '@types/serve-static': 1.13.10
     dev: true
 
+  /@types/fibers/3.1.1:
+    resolution: {integrity: sha512-yHoUi46uika0snoTpNcVqUSvgbRndaIps4TUCotrXjtc0DHDoPQckmyXEZ2bX3e4mpJmyEW3hRhCwQa/ISCPaA==}
+    dev: true
+
   /@types/html-minifier-terser/6.0.0:
     resolution: {integrity: sha512-NZwaaynfs1oIoLAV1vg18e7QMVDvw+6SQrdJc8w3BwUaoroVSf6EBj/Sk4PBWGxsq0dzhA2drbsuMC1/6C6KgQ==}
     dev: true
@@ -1473,6 +1483,12 @@ packages:
 
   /@types/retry/0.12.1:
     resolution: {integrity: sha512-xoDlM2S4ortawSWORYqsdU+2rxdh4LRW9ytc3zmT37RIKQh6IHyKwwtKhKis9ah8ol07DCkZxPt8BBvPjC6v4g==}
+    dev: true
+
+  /@types/sass/1.16.1:
+    resolution: {integrity: sha512-iZUcRrGuz/Tbg3loODpW7vrQJkUtpY2fFSf4ELqqkApcS2TkZ1msk7ie8iZPB86lDOP8QOTTmuvWjc5S0R9OjQ==}
+    dependencies:
+      '@types/node': 16.11.1
     dev: true
 
   /@types/scheduler/0.16.2:
@@ -3852,7 +3868,7 @@ packages:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
     dev: true
 
-  /sass-loader/12.2.0_webpack@5.58.2:
+  /sass-loader/12.2.0_sass@1.43.2+webpack@5.58.2:
     resolution: {integrity: sha512-qducnp5vSV+8A8MZxuH6zV0MUg4MOVISScl2wDTCAn/2WJX+9Auxh92O/rnkdR2bvi5QxZBafnzkzRrWGZvm7w==}
     engines: {node: '>= 12.13.0'}
     peerDependencies:
@@ -3870,7 +3886,16 @@ packages:
     dependencies:
       klona: 2.0.4
       neo-async: 2.6.2
+      sass: 1.43.2
       webpack: 5.58.2_webpack-cli@4.9.1
+    dev: true
+
+  /sass/1.43.2:
+    resolution: {integrity: sha512-DncYhjl3wBaPMMJR0kIUaH3sF536rVrOcqqVGmTZHQRRzj7LQlyGV7Mb8aCKFyILMr5VsPHwRYtyKpnKYlmQSQ==}
+    engines: {node: '>=8.9.0'}
+    hasBin: true
+    dependencies:
+      chokidar: 3.5.2
     dev: true
 
   /scheduler/0.20.2:
