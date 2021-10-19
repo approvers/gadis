@@ -4,6 +4,11 @@ mod domain;
 mod controller;
 mod presenter;
 
-fn main() {
-    println!("Hello, world!");
+use client::Client;
+use client::console::ConsoleClient;
+
+#[tokio::main]
+async fn main() {
+    let client = ConsoleClient::new();
+    client.start().await;
 }
