@@ -1,0 +1,101 @@
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - frontend/**
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+    paths:
+      - frontend/**
+
+jobs:
+  eslint:
+    name: Run eslint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout to the repository
+        uses: actions/checkout@v2
+
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('frontend/**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.14
+
+      - name: Install dependencies
+        working-directory: frontend/
+        run: pnpm install
+
+      - name: Execute eslint
+        working-directory: frontend/
+        run: pnpm lint:eslint
+
+  stylelint:
+    name: Run stylelint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout to the repository
+        uses: actions/checkout@v2
+
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('frontend/**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.14
+
+      - name: Install dependencies
+        working-directory: frontend/
+        run: pnpm install
+
+      - name: Execute stylelint
+        working-directory: frontend/
+        run: pnpm lint:stylelint
+
+  prettier:
+    name: Run prettier
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout to the repository
+        uses: actions/checkout@v2
+
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('frontend/**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.14
+
+      - name: Install dependencies
+        working-directory: frontend/
+        run: pnpm install
+
+      - name: Execute prettier
+        working-directory: frontend/
+        run: pnpm lint:prettier
