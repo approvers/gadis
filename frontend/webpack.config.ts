@@ -1,4 +1,6 @@
 import path from "path";
+import sass from "sass";
+import fibers from "fibers";
 import { Configuration as WebpackConfiguration } from "webpack";
 import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server";
 import CopyWebpackPlugin from "copy-webpack-plugin";
@@ -25,7 +27,30 @@ const configuration: Configuration = {
         use: [
           "babel-loader"
         ]
-      }
+      },
+      {
+        test: /\.s?css$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader?modules",
+            options: {
+              sourceMap: !isProduction,
+              importLoaders: 2,
+              modules: {
+                exportLocalsConvention: "dashes"
+              }
+            }
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              implementation: sass,
+              sourceMap: !isProduction,
+            }
+          }
+        ]
+      },
     ]
   },
   plugins: [
