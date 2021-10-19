@@ -1,6 +1,10 @@
 use std::future::Future;
+use async_trait::async_trait;
 
-trait Client {
+pub mod console;
+
+#[async_trait]
+pub trait Client {
     fn new() -> Self;
-    fn start() -> dyn Future<Output=()>;
+    async fn start(&self);
 }
