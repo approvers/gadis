@@ -2,6 +2,10 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    types:
+      - opened
+      - synchronize
 
 jobs:
   deploy:
@@ -12,6 +16,9 @@ jobs:
       id-token: write
       contents: write
       pull-requests: read
+
+    env:
+      zip_artifact: gadis-codedeploy-source.zip
 
     steps:
       - name: Checkout to the repository
@@ -32,9 +39,8 @@ jobs:
           role-session-name: GitHubAction_ECDeploy
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - uses: blombard/lambda-monorepo@master
-        with:
-          lambda-functions: '${{ toJson(steps.filter.outputs) }}'
-          alias-name: 'production'
-          layer-name: 'DeployedLayer'
+      - name: Copy file to S3 and start deploying
+        run: |
+          zip -r -o ${{ env.zip_artifact }} bot
+          aws s3 cp ${{ env.zip_artifact }} ${{ secrets.EC2_DEPLOY_S3_BUCKET_NAME }}
 
