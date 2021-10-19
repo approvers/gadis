@@ -1,0 +1,40 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy projects to AWS Lambda
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
+      contents: write
+      pull-requests: read
+
+    steps:
+      - name: Checkout to the repository
+        uses: actions/checkout@v2
+
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('lambda/**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@b8c74de753fbcb4868bf2011fb2e15826ce973af
+        with:
+          role-to-assume: ${{ secrets.EC2_DEPLOY_ASSUMING_ROLE }}
+          role-session-name: GitHubAction_ECDeploy
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - uses: blombard/lambda-monorepo@master
+        with:
+          lambda-functions: '${{ toJson(steps.filter.outputs) }}'
+          alias-name: 'production'
+          layer-name: 'DeployedLayer'
+
