@@ -1,6 +1,6 @@
 use std::future::Future;
 
-trait Client {
+pub trait Client {
     fn new() -> Self;
     fn start() -> dyn Future<Output=()>;
 }
