@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - curl https://sh.rustup.rs -sSf | sh /dev/stdin -y
+      - source $HOME/.cargo/env
+  build:
+    commands:
+      - cd bot/gadis_bot
+      - cargo build --release
+
+artifacts:
+  base-directory: bot
+  files:
+    - gadis_bot/target/release/gadis_bot
+    - hooks/*
+    - appspec.yml

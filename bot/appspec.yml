@@ -1,0 +1,24 @@
+version: 0.0
+os: linux
+
+files:
+  - source: /gadis_bot/target/release/gadis_bot
+    destination: /home/ec2-user/bot
+file_exists_behavior: OVERWRITE
+
+
+permissions:
+  - object: /home/ec2-user/bot
+    pattern: "gadis_bot"
+    mode: 754
+
+hooks:
+  ApplicationStart:
+    - location: hooks/start.sh
+      timeout: 300
+      runas: root
+  ApplicationStop:
+    - location: hooks/stop.sh
+      timeout: 300
+      runas: root
+
