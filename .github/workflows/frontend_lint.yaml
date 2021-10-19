@@ -36,7 +36,7 @@ jobs:
 
       - name: Execute eslint
         working-directory: frontend/
-        run: pnpm each lint:eslint
+        run: pnpm lint:eslint
 
   stylelint:
     name: Run stylelint
@@ -63,9 +63,9 @@ jobs:
         working-directory: frontend/
         run: pnpm install
 
-      - name: Execute eslint
+      - name: Execute stylelint
         working-directory: frontend/
-        run: pnpm each lint:eslint
+        run: pnpm lint:stylelint
 
   prettier:
     name: Run prettier
@@ -94,4 +94,4 @@ jobs:
 
       - name: Execute prettier
         working-directory: frontend/
-        run: pnpm each lint:prettier
+        run: pnpm lint:prettier
