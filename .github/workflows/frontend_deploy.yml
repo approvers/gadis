@@ -3,7 +3,10 @@ on:
     branches:
       - main
     paths:
-      - bot/**
+      - frontend/**
+  pull_request:
+    paths:
+      - frontend/**
 
 jobs:
   deploy:
