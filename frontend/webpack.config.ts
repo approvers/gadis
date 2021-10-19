@@ -25,7 +25,15 @@ const configuration: Configuration = {
       {
         test: /\.tsx$/,
         use: [
-          "babel-loader"
+          "babel-loader",
+          {
+            loader: "ts-loader",
+            options: {
+              compilerOptions: {
+                noEmit: false
+              }
+            }
+          }
         ]
       },
       {
