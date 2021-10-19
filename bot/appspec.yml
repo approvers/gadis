@@ -4,6 +4,8 @@ os: linux
 files:
   - source: /gadis_bot/target/release/gadis_bot
     destination: /home/ec2-user/bot
+file_exists_behavior: OVERWRITE
+
 
 permissions:
   - object: /home/ec2-user/bot
