@@ -1,6 +1,3 @@
-extern crate gadis_api;
-extern crate gadis_bot;
-
 use gadis_api::api_entry;
 use gadis_bot::bot_entry;
 
