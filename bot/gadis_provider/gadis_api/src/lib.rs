@@ -1,11 +1,9 @@
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        assert_eq!(2 + 2, 4);
-    }
-}
+mod setup;
+mod controller;
+mod entity;
+mod presenter;
+mod usecase;
 
-pub fn api_entry() {
-    println!("Here is gadis_api!");
+pub fn setup() {
+    setup::initialize();
 }
