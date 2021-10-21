@@ -13,6 +13,6 @@ phases:
 artifacts:
   base-directory: bot
   files:
-    - gadis_bot/target/release/gadis_bot
+    - gadis_provider/target/release/gadis_bot
     - hooks/*
     - appspec.yml
