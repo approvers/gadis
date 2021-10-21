@@ -2,14 +2,14 @@ version: 0.0
 os: linux
 
 files:
-  - source: /gadis_bot/target/release/gadis_bot
+  - source: /gadis_provider/target/release/gadis_provider
     destination: /home/ec2-user/bot
 file_exists_behavior: OVERWRITE
 
 
 permissions:
   - object: /home/ec2-user/bot
-    pattern: "gadis_bot"
+    pattern: "gadis_provider"
     mode: 754
 
 hooks:

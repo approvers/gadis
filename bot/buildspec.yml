@@ -7,12 +7,12 @@ phases:
       - source $HOME/.cargo/env
   build:
     commands:
-      - cd bot/gadis_bot
+      - cd bot/gadis_provider
       - cargo build --release
 
 artifacts:
   base-directory: bot
   files:
-    - gadis_bot/target/release/gadis_bot
+    - gadis_provider/target/release/gadis_provider
     - hooks/*
     - appspec.yml
