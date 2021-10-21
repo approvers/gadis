@@ -13,12 +13,12 @@ permissions:
     mode: 754
 
 hooks:
-  ApplicationStart:
-    - location: hooks/start.sh
+  BeforeInstall:
+    - location: hooks/stop.sh
       timeout: 300
       runas: root
-  ApplicationStop:
-    - location: hooks/stop.sh
+  ApplicationStart:
+    - location: hooks/start.sh
       timeout: 300
       runas: root
 
