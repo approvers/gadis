@@ -1,3 +1,5 @@
+use async_trait::async_trait;
+
 pub(crate) mod initialize;
 
 pub(crate) trait Setup {
@@ -5,7 +7,8 @@ pub(crate) trait Setup {
     fn setup(&mut self) -> Result<(), Self::E>;
 }
 
+#[async_trait]
 pub(crate) trait Start {
     type E: std::error::Error;
-    fn start(self) -> Result<(), Self::E>;
+    async fn start(self) -> Result<(), Self::E>;
 }
