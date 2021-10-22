@@ -1,5 +1,5 @@
 use crate::entity::User;
 
 pub trait DiscordUserProvideRequestHandler {
-    fn request(discord_user: &str) -> User;
+    fn request(&self, discord_user: &str) -> User;
 }
