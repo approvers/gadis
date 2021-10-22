@@ -1,5 +1,9 @@
-use crate::entity::User;
+use crate::presenter::UserProvideOutputPort;
 
-pub(crate) trait ProvideUserRequest {
-    fn request(user_id: &str) -> User;
+pub(crate) struct ProvideUserUsecase;
+
+impl ProvideUserUsecase {
+    fn request(&self, user_id: &str, output_port: &mut impl UserProvideOutputPort) {
+        todo!("Implement here");
+    }
 }
