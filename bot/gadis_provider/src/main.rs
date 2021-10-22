@@ -1,8 +1,6 @@
-use gadis_api::api_entry;
-use gadis_bot::bot_entry;
-
 fn main() {
     println!("Hello, world!");
-    api_entry();
-    bot_entry();
+
+    gadis_api::setup();
+    gadis_bot::setup();
 }

@@ -1,5 +1,5 @@
 use crate::entity::User;
 
 pub(crate) trait UserProviderGateway {
-    fn request(id: &str) -> User;
+    fn request(&self, id: &str) -> User;
 }
