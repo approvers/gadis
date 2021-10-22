@@ -1,4 +1,4 @@
-mod initialize;
+pub(crate) mod initialize;
 
 pub(crate) trait Setup {
     type E: std::error::Error;

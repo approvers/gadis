@@ -5,5 +5,5 @@ mod presenter;
 mod usecase;
 
 pub fn setup() {
-    setup::initialize();
+    setup::initialize::initialize();
 }
