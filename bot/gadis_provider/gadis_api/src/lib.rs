@@ -4,6 +4,9 @@ mod entity;
 mod presenter;
 mod usecase;
 
-pub fn setup() {
-    setup::initialize::initialize();
+use crate::setup::Start;
+
+pub async fn setup() {
+    let handler = setup::initialize::initialize();
+    handler.start().await;
 }
