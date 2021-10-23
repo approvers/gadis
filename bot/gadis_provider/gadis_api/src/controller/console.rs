@@ -9,7 +9,7 @@ impl Start for ConsoleUserRequestHandler {
     async fn start(self) -> Result<(), Self::E> {
         println!("Console client");
 
-        'clinet_main_loop: loop {
+        loop {
             print!("> ");
 
             let mut command = String::new();
@@ -18,13 +18,22 @@ impl Start for ConsoleUserRequestHandler {
             let command: Vec<&str> = command.split(" ").collect();
             let command = command.as_slice();
 
-            match command {
-                &["echo", text] => { println!("{}", text); },
-                &["quit", _] => { break 'clinet_main_loop; }
-                _ => { println!("[!] Unrecognized command."); }
+            if command[0] == "quit" || command[0] == "exit" {
+                break;
             }
+
+            self.interprete(command);
         }
 
         Ok(())
+    }
+}
+
+impl ConsoleUserRequestHandler {
+    fn interprete(&self, command: &[&str]) {
+        match command {
+            &["echo", text] => { println!("{}", text); },
+            _ => { println!("[!] Unrecognized command."); }
+        }
     }
 }
