@@ -1,9 +1,15 @@
 use async_trait::async_trait;
-use crate::controller::UserRequestHandler;
+use crate::setup::Start;
 
-struct Dummy;
-impl UserRequestHandler for Dummy {}
+use crate::controller::warp::HttpUserRequestHandler;
+use crate::controller::console::ConsoleUserRequestHandler;
 
-pub(crate) fn initialize() -> impl UserRequestHandler {
-    Dummy
+pub(crate) fn initialize() -> impl Start {
+    #[cfg(feature = "client-warp")]
+    let client = HttpUserRequestHandler;
+
+    #[cfg(feature= "client-console")]
+    let client = ConsoleUserRequestHandler;
+
+    client
 }

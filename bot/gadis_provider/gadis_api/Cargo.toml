@@ -6,3 +6,13 @@ version = "0.1.0"
 
 [dependencies]
 async-trait = "*"
+tokio = { version = "*", features = ["rt", "rt-multi-thread", "macros"] }
+warp = "*"
+
+[features]
+default = ["prod"]
+client-warp = []
+client-console = []
+
+prod = ["client-warp"]
+dev = ["client-console"]
