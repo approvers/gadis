@@ -2,6 +2,8 @@
 async fn main() {
     println!("Hello, world!");
 
-    gadis_api::setup().await;
+    gadis_api::setup()
+        .await
+        .unwrap();
     gadis_bot::setup();
 }

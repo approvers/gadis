@@ -6,7 +6,7 @@ mod usecase;
 
 use crate::setup::Start;
 
-pub async fn setup() {
+pub async fn setup() -> Result<(), impl std::error::Error> {
     let handler = setup::initialize::initialize();
-    handler.start().await;
+    handler.start().await
 }
