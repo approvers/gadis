@@ -1,3 +1,5 @@
+use std::io::Write;
+
 use crate::setup::Start;
 
 pub(crate) struct ConsoleUserRequestHandler;
@@ -11,11 +13,12 @@ impl Start for ConsoleUserRequestHandler {
 
         loop {
             print!("> ");
+            std::io::stdout().flush().unwrap();
 
             let mut command = String::new();
             std::io::stdin().read_line(&mut command)?;
 
-            let command: Vec<&str> = command.split(" ").collect();
+            let command: Vec<&str> = command.strip_suffix("\n").unwrap().split(" ").collect();
             let command = command.as_slice();
 
             if command[0] == "quit" || command[0] == "exit" {
