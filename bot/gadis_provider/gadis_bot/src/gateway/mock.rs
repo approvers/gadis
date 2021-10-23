@@ -57,20 +57,51 @@ impl MockDiscordGateway {
 
 #[cfg(test)]
 mod test {
+    use crate::gateway::DiscordGateway;
     use super::{MockDiscordGateway, RequestResultPolicy};
 
     #[test]
-    fn sucess_when_policy_says_so_and_it_returns_value_in_the_format_that_i_want() {
+    fn succeeds_in_default_behavior() {
         let gateway = MockDiscordGateway;
-        let user = gateway.request_with_policy("12345", RequestResultPolicy::Success);
-
-        let user = user.expect("It should success");
-        let user = user.expect("It should have a value");
+        let user = gateway.request("12345")
+            .expect("Request should success")
+            .expect("The value should exist");
 
         assert_eq!(user.name, "User #12345");
         assert_eq!(user.nickname, "Mr. 12345");
         assert_eq!(user.pic_url, "somewhere://12345");
         assert_eq!(user.roles[0].name, "Role for user 12345");
         assert_eq!(user.roles[0].color_code, 0);
+    }
+
+    #[test]
+    fn succeeds_when_success_policy() {
+        let gateway = MockDiscordGateway;
+        let user = gateway.request_with_policy("12345", RequestResultPolicy::Success)
+            .expect("Request should success")
+            .expect("The value should exist");
+
+        assert_eq!(user.name, "User #12345");
+        assert_eq!(user.nickname, "Mr. 12345");
+        assert_eq!(user.pic_url, "somewhere://12345");
+        assert_eq!(user.roles[0].name, "Role for user 12345");
+        assert_eq!(user.roles[0].color_code, 0);
+    }
+
+    #[test]
+    fn returns_none_when_not_found_policy() {
+        let gateway = MockDiscordGateway;
+        let user = gateway.request_with_policy("12345", RequestResultPolicy::NotFound)
+            .expect("Request should success");
+
+        assert!(user.is_none());
+    }
+
+    #[test]
+    fn returns_err_when_error_policy() {
+        let gateway = MockDiscordGateway;
+        let user = gateway.request_with_policy("12345", RequestResultPolicy::Fails);
+
+        assert!(user.is_err());
     }
 }
