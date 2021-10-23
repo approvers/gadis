@@ -2,6 +2,7 @@ mod controller;
 mod setup;
 mod presenter;
 mod usecase;
+mod gateway;
 
 pub mod entity;
 

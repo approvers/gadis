@@ -1,5 +1,9 @@
+mod mock;
+
 use crate::entity::User;
 
 trait DiscordGateway {
-    fn request(&self, user_id: &str) -> User;
+    type E: std::error::Error;
+
+    fn request(&self, user_id: &str) -> Result<Option<User>, Self::E>;
 }
